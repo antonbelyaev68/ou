@@ -6,11 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Application\DashboardBundle\Entity\Role;
-
+#use FOS\UserBundle\Model\User as BaseUser;
+#use Sonata\UserBundle\Entity\BaseUser as BaseUser;
 /**
  * @ORM\Entity
  * @ORM\Table(name="sys_user")
  */
+#class User extends BaseUser implements UserInterface {
 class User implements UserInterface {
     /**
      * @ORM\Id
@@ -126,14 +128,8 @@ class User implements UserInterface {
     }
 
     public function getRoles() {
-        #return $this->getUserRoles()->toArray();
-        $tmp = $this->getUserRoles()->toArray();
-        echo "<pre>"; var_dump($tmp); echo "</pre>"; exit;
-        /*$roles = array();
-        foreach ($this->userRoles as $role) {
-            $roles[] = $role->getRole();
-        }
-        return $roles;*/
+        #return $this->getUserRoles();
+        return $this->getUserRoles()->toArray();
     }
     
     public function addRole(Role $userRole) {
