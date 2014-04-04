@@ -1,28 +1,62 @@
 security:
-    #role_hierarchy:
-    #    ROLE_ADMIN: ROLE_USER
-        
+
     encoders:
-        Application\DashboardBundle\Entity\User:
-            algorithm: md5
-            encode-as-base64: false
-            iterations: 1
+        #Application\DashboardBundle\Entity\User:
+        #    algorithm: md5
+        #    encode-as-base64: false
+        #    iterations: 1
+        FOS\UserBundle\Model\UserInterface: md5
             
     providers:
-        main:
-            entity: { class: DashboardBundle:User, property: login }
-
+        #main:
+        #    entity: { class: DashboardBundle:User, property: login }
+        fos_userbundle:
+            #id: fos_user.user_provider.username
+            id: fos_user.user_manager
+            
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        
     firewalls:
-        main:
-            pattern: /.*
+        admin:
+            pattern:            /admin(.*)
+            context:            user
             form_login:
-                check_path: /login_check
-                login_path: /
-            logout: true
-            security: true
-            anonymous: true
+                provider:       fos_userbundle
+                login_path:     /admin/login
+                use_forward:    false
+                check_path:     /admin/login_check
+                failure_path:   null
+            logout:
+                path:           /admin/logout
+            anonymous:          true
+
+        main:
+            pattern:             .*
+            context:             user
+            form_login:
+                provider:       fos_userbundle
+                login_path:     /login
+                use_forward:    false
+                check_path:     /login_check
+                failure_path:   null
+            logout:             true
+            anonymous:          true
 
     access_control:
-        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
-        ##- { path: /admin/.*, role: ROLE_ADMIN }
-        - { path: /.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        # URL of FOSUserBundle which need to be available to anonymous users
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        # Admin login page needs to be access without credential
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        # Secured part of the site
+        # This config requires being logged for the whole site and having the admin role for the admin part.
+        # Change these rules to adapt them to your needs
+        - { path: ^/admin/, role: [ROLE_ADMIN] }
+        - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
