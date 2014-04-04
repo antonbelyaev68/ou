@@ -1,0 +1,135 @@
+services:
+    
+    sonata.block.service.newsletter:
+        class: Application\DashboardBundle\Block\NewsletterBlockService
+        tags:
+             - { name: sonata.block }
+        arguments: [ "sonata.block.service.newsletter", @templating ]        
+        
+    sonata.admin.CarColor:
+        class: Application\DashboardBundle\Actions\PostCarColor
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Авто", label: "Цвет" }
+        arguments: [null, Application\DashboardBundle\Entity\CarColor, null]
+        calls:
+            - [ setTranslationDomain, [ApplicationDashboardBundle]]
+            
+    sonata.admin.User:
+        class: Application\DashboardBundle\Actions\PostUser
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Администрирование", label: "Пользователи" }
+        arguments: [null, Application\DashboardBundle\Entity\User, null]
+        calls:
+            - [ setTranslationDomain, [ApplicationDashboardBundle]]
+            
+    sonata.admin.Department:
+        class: Application\DashboardBundle\Actions\PostDepartment
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Администрирование", label: "Отделения" }
+        arguments: [null, Application\DashboardBundle\Entity\Department, null]
+        calls:
+            - [ setTranslationDomain, [ApplicationDashboardBundle]]
+            
+    sonata.admin.Role:
+        class: Application\DashboardBundle\Actions\PostRole
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Администрирование", label: "Роли" }
+        arguments: [null, Application\DashboardBundle\Entity\Role, null]
+        calls:
+            - [ setTranslationDomain, [ApplicationDashboardBundle]]            
+
+    sonata.admin.SignPlace:
+        class: Application\DashboardBundle\Actions\PostSignPlace
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Приметы", label: "Место" }
+        arguments: [null, Application\DashboardBundle\Entity\SignPlace, null]
+        calls:
+            - [ setTranslationDomain, [ApplicationDashboardBundle]]
+            
+    sonata.admin.SignType:
+        class: Application\DashboardBundle\Actions\PostSignType
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Приметы", label: "Тип" }
+        arguments: [null, Application\DashboardBundle\Entity\SignType, null]
+        calls:
+            - [ setTranslationDomain, [ApplicationDashboardBundle]]
+            
+    sonata.admin.IdentificationCategory:
+        class: Application\DashboardBundle\Actions\PostIdentificationCategory
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Отождествление", label: "Основание" }
+        arguments: [null, Application\DashboardBundle\Entity\IdentificationCategory, null]
+        calls:
+            - [ setTranslationDomain, [ApplicationDashboardBundle]]
+            
+    sonata.admin.IdentificationType:
+        class: Application\DashboardBundle\Actions\PostIdentificationType
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Отождествление", label: "Категория" }
+        arguments: [null, Application\DashboardBundle\Entity\IdentificationType, null]
+        calls:
+            - [ setTranslationDomain, [ApplicationDashboardBundle]]
+            
+    sonata.admin.IdentificationReason:
+        class: Application\DashboardBundle\Actions\PostIdentificationReason
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Отождествление", label: "Тип" }
+        arguments: [null, Application\DashboardBundle\Entity\IdentificationReason, null]
+        calls:
+            - [ setTranslationDomain, [ApplicationDashboardBundle]]
+
+    sonata.admin.Category:
+        class: Application\DashboardBundle\Actions\PostCategory
+        tags: 
+            - { name: sonata.admin, manager_type: orm, group: "Справочники", label: "Категории" }
+        arguments: [null, Application\DashboardBundle\Entity\Category, null]
+        calls: 
+            - [ setTranslationDomain, [ApplicationDashboardBundle]]   
+
+    sonata.admin.ConnectionType:
+        class: Application\DashboardBundle\Actions\PostConnectionType
+        tags: 
+            - { name: sonata.admin, manager_type: orm, group: "Справочники", label: "Тип связи" }
+        arguments: [null, Application\DashboardBundle\Entity\ConnectionType, null]
+        calls: 
+            - [ setTranslationDomain, [ApplicationDashboardBundle]] 
+
+    sonata.admin.Sex:
+        class: Application\DashboardBundle\Actions\PostSex
+        tags: 
+            - { name: sonata.admin, manager_type: orm, group: "Справочники", label: "Пол" }
+        arguments: [null, Application\DashboardBundle\Entity\Sex, null]
+        calls: 
+            - [ setTranslationDomain, [ApplicationDashboardBundle]]  
+            
+    sonata.admin.Height:
+        class: Application\DashboardBundle\Actions\PostHeight
+        tags: 
+            - { name: sonata.admin, manager_type: orm, group: "Справочники", label: "Рост" }
+        arguments: [null, Application\DashboardBundle\Entity\Height, null]
+        calls: 
+            - [ setTranslationDomain, [ApplicationDashboardBundle]]         
+        
+    sonata.admin.SimilarTo:
+        class: Application\DashboardBundle\Actions\PostSimilarTo
+        tags: 
+            - { name: sonata.admin, manager_type: orm, group: "Справочники", label: "Похож на" }
+        arguments: [null, Application\DashboardBundle\Entity\SimilarTo, null]
+        calls: 
+            - [ setTranslationDomain, [ApplicationDashboardBundle]] 
+            
+    sonata.admin.Physique:
+        class: Application\DashboardBundle\Actions\PostPhysique
+        tags: 
+            - { name: sonata.admin, manager_type: orm, group: "Справочники", label: "Телосложение" }
+        arguments: [null, Application\DashboardBundle\Entity\Physique, null]
+        calls: 
+            - [ setTranslationDomain, [ApplicationDashboardBundle]]
+            
+    sonata.admin.Nationality:
+        class: Application\DashboardBundle\Actions\PostNationality
+        tags: 
+            - { name: sonata.admin, manager_type: orm, group: "Справочники", label: "Национальность" }
+        arguments: [null, Application\DashboardBundle\Entity\Nationality, null]
+        calls: 
+            - [ setTranslationDomain, [ApplicationDashboardBundle]]

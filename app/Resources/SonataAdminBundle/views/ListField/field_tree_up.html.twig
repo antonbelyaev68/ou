@@ -1,0 +1,11 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    {% spaceless %}
+        {% if object.parent.children[0].id != object.id %}
+            <a href="{{ path('page_tree_up', {'page_id': object.id}) }}">
+                <img  height="30" width="30" src="{{ asset('bundles/sonataadmin/arrow_up.png') }}" alt="{% trans %}Вверх{% endtrans %}" />
+            </a>
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}
