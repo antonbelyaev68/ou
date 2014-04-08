@@ -14,29 +14,31 @@ services:
         calls:
             - [ setTranslationDomain, [ApplicationDashboardBundle]]
             
-    sonata.admin.User:
-        class: Application\DashboardBundle\Actions\PostUser
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: "Администрирование", label: "Пользователи" }
-        arguments: [null, Application\DashboardBundle\Entity\User, null]
-        calls:
-            - [ setTranslationDomain, [ApplicationDashboardBundle]]
+    #sonata.admin.User:
+    #    class: Application\DashboardBundle\Actions\PostUser
+    #    #class: Application\DashboardBundle\Actions\PostUser
+    #    tags:
+    #        - { name: sonata.admin, manager_type: orm, group: "Пользователи", label: "Пользователи" }
+    #    arguments: [null, Application\DashboardBundle\Entity\User, null]
+    #   #arguments: [null, Application\UserBundle\Entity\User, null]
+    #   calls:
+    #        - [ setTranslationDomain, [ApplicationDashboardBundle]]
             
     sonata.admin.Department:
         class: Application\DashboardBundle\Actions\PostDepartment
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Администрирование", label: "Отделения" }
+            - { name: sonata.admin, manager_type: orm, group: "Пользователи", label: "Отделения" }
         arguments: [null, Application\DashboardBundle\Entity\Department, null]
         calls:
             - [ setTranslationDomain, [ApplicationDashboardBundle]]
             
-    sonata.admin.Role:
-        class: Application\DashboardBundle\Actions\PostRole
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: "Администрирование", label: "Роли" }
-        arguments: [null, Application\DashboardBundle\Entity\Role, null]
-        calls:
-            - [ setTranslationDomain, [ApplicationDashboardBundle]]            
+    #sonata.admin.Role:
+    #    class: Application\DashboardBundle\Actions\PostRole
+    #    tags:
+    #        - { name: sonata.admin, manager_type: orm, group: "Пользователи", label: "Роли" }
+    #    arguments: [null, Application\DashboardBundle\Entity\Role, null]
+    #    calls:
+    #        - [ setTranslationDomain, [ApplicationDashboardBundle]]            
 
     sonata.admin.SignPlace:
         class: Application\DashboardBundle\Actions\PostSignPlace
