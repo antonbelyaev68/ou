@@ -157,7 +157,7 @@ sonata_admin:
                 #settings: {groups: [user, sign] } 
             - { position: left, type: sonata.admin.block.admin_list }
             - { position: right, type: sonata.block.service.newsletter}
-            - { position: right, type: sonata.block.service.text, settings: { content: "<h2>Text Block</h2> <p>This is a <code>sonata.block.service.text</code> from the Block Bundle, you can create and add new block in these area by configuring the <code>sonata_admin</code> section.</p>"} }        
+            - { position: center, type: sonata.block.service.text, settings: { content: "<h2>Text Block</h2> <p>This is a <code>sonata.block.service.text</code> from the Block Bundle, you can create and add new block in these area by configuring the <code>sonata_admin</code> section.</p>"} }        
         #groups:
             #user:                
                 #label_catalogue: ???
