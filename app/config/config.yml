@@ -155,44 +155,45 @@ sonata_admin:
     dashboard:        
         blocks:
                 #settings: {groups: [user, sign] } 
-            - { position: left, type: sonata.admin.block.admin_list }
+            #- { position: left, type: sonata.admin.block.admin_list }
+            - { position: left, type: sonata.block.service.newsletter}
             - { position: right, type: sonata.block.service.newsletter}
             - { position: center, type: sonata.block.service.text, settings: { content: "<h2>Text Block</h2> <p>This is a <code>sonata.block.service.text</code> from the Block Bundle, you can create and add new block in these area by configuring the <code>sonata_admin</code> section.</p>"} }        
-        #groups:
-            #user:                
+        groups:
+            user:                
                 #label_catalogue: ???
                 #item_adds: ???
                 #roles: [ SUPER_ADMIN ]
-            #    label: Пользователи
-            #    items:
-            #        - sonata.admin.User
-            #        - sonata.admin.Role
-            #        - sonata.admin.Department
-            #sign:
-            #    label: Приметы
-            #    items:
-            #        - sonata.admin.SignPlace
-            #        - sonata.admin.SignType
-            #car:
-            #    label: Авто
-            #    items:
-            #        - sonata.admin.CarColor
-            #identification:
-            #    label: Отождествление
-            #    items:
-            #        - sonata.admin.IdentificationCategory
-            #        - sonata.admin.IdentificationType
-            #        - sonata.admin.IdentificationReason
-            #directory:
-            #    label: Справочники
-            #    items:
-            #        - sonata.admin.Category
-            #        - sonata.admin.ConnectionType
-            #        - sonata.admin.Sex
-            #        - sonata.admin.Height
-            #        - sonata.admin.SimilarTo
-            #        - sonata.admin.Physique
-            #        - sonata.admin.Nationality
+                label: Пользователи
+                items:
+                    - sonata.user.admin.user
+                    - sonata.user.admin.group
+                    - sonata.admin.Department
+            sign:
+                label: Приметы
+                items:
+                    - sonata.admin.SignPlace
+                    - sonata.admin.SignType
+            car:
+                label: Авто
+                items:
+                    - sonata.admin.CarColor
+            identification:
+                label: Отождествление
+                items:
+                    - sonata.admin.IdentificationCategory
+                    - sonata.admin.IdentificationType
+                    - sonata.admin.IdentificationReason
+            directory:
+                label: Справочники
+                items:
+                    - sonata.admin.Category
+                    - sonata.admin.ConnectionType
+                    - sonata.admin.Sex
+                    - sonata.admin.Height
+                    - sonata.admin.SimilarTo
+                    - sonata.admin.Physique
+                    - sonata.admin.Nationality
 sonata_user:  
     security_acl:     false
     class:
