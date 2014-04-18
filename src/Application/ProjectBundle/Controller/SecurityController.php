@@ -12,16 +12,19 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 #use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 #use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-#http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
 
 class SecurityController extends Controller
 {
     /**
-    * @Route("/", name="login")
+    * @Route("/")
     * @Method({"GET", "POST"})
     */
-    public function loginAction() {
-        $request = $this->getRequest();
+    public function indexAction() {
+        #return $this->render('FOSUserBundle:Security:login.html.twig');
+        if (!$this->get('security.context')->isGranted('ROLE_USER')) { 
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+        /*$request = $this->getRequest();
         $session = $request->getSession();
 
         // get the login error if there is one
@@ -39,6 +42,11 @@ class SecurityController extends Controller
                 'last_username' => $session->get(SecurityContext::LAST_USERNAME),
                 'error'         => $error,
             )
-        );
+        );*/
     }
 }
+
+/**
+    * @Route("/", name="login")
+    * @Method({"GET", "POST"})
+    */

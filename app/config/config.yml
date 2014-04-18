@@ -77,10 +77,15 @@ fos_user:
     firewall_name: main
     user_class: Application\Sonata\UserBundle\Entity\User
     group:
-        group_class:   Application\Sonata\UserBundle\Entity\Group
+        group_class:   Application\Sonata\UserBundle\Entity\Group    
     #    group_manager: sonata.user.orm.group_manager        
     #service:
     #    user_manager: sonata.user.orm.user_manager
+    profile:
+        form:
+            type:               fos_user_profile
+            handler:            fos_user.profile.form.handler.default
+            name:               fos_user_profile_form
 
 stof_doctrine_extensions:
     default_locale: en_US

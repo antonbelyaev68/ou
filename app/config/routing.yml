@@ -17,14 +17,6 @@ _sonata_admin:
     type: sonata_admin
     prefix: /admin
 
-login_check:
-    pattern:  /login_check
-
-logout:
-    pattern:  /logout
-
-sonata_user_security:
-    resource: "@SonataUserBundle/Resources/config/routing/sonata_security_1.xml"
 
 sonata_user_resetting:
     resource: "@SonataUserBundle/Resources/config/routing/sonata_resetting_1.xml"
@@ -45,3 +37,12 @@ sonata_user_change_password:
 sonata_user:
     resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
     prefix: /admin
+    
+sonata_user_security:
+    resource: "@SonataUserBundle/Resources/config/routing/sonata_security_1.xml"
+
+login_check:
+    pattern:  /login_check
+
+logout:
+    pattern:  /logout
